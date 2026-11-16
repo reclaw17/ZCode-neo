@@ -1,4 +1,3 @@
-import { ensureCliDeviceMid } from "../device/cli-device-mid.js";
 import type { EnvRecord } from "./model-execution.js";
 import { normalizeModelSessionIdForAttribution, type ModelStatusContext } from "./runner-status.js";
 
@@ -20,15 +19,13 @@ export async function resolveAnthropicRequestMetadataUserId(input: {
   providerKind: string | undefined;
   sessionId?: ModelStatusContext["sessionId"];
 }): Promise<string | undefined> {
-  if (input.providerKind !== "anthropic") {
-    return undefined;
-  }
-
-  const deviceMid = await ensureCliDeviceMid({ env: input.env });
-  return createAnthropicRequestMetadataUserId({
-    deviceMid,
-    sessionId: input.sessionId,
-  });
+  // FORK POLICY (reclaw17/ZCode): never attach device/account/session attribution to
+  // model requests. Upstream embedded a persistent device id (telemetry-state.json)
+  // into metadata.user_id of every Anthropic-protocol request; the fork returns no
+  // metadata, and mergeAnthropicRequestMetadata leaves provider options untouched
+  // when the resolver yields undefined.
+  void input;
+  return undefined;
 }
 
 export function redactAnthropicRequestMetadata(value: unknown): unknown {

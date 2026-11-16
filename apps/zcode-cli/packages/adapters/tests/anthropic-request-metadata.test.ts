@@ -245,12 +245,10 @@ describe("Anthropic request metadata", () => {
         | undefined;
       // Reasoning 由 Model Option Map 写入最终原始请求体；SDK Provider Options
       // 这里只承载 Anthropic 动态归因元数据，不能形成第二套 Reasoning 映射。
+      // FORK POLICY: динамическая атрибуция устройства отключена — резолвер
+      // возвращает undefined, остаётся только статический userId из запроса.
       expect(anthropicOptions?.effort).toBeUndefined();
-      expect(JSON.parse(anthropicOptions?.metadata?.userId ?? "")).toEqual({
-        device_id: "7f1431f0-53e8-41c1-9cf9-22d11aa51d6a",
-        account_uuid: "",
-        session_id: "2d480878-38af-4bae-a54f-096e2fb0f4d7",
-      });
+      expect(anthropicOptions?.metadata?.userId).toBe("stale-static-user-id");
     }
   });
 });
