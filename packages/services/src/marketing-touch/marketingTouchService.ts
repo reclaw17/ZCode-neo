@@ -36,11 +36,10 @@ export function createMarketingTouchService(options: {
       previousToken = token;
       scope = randomUUID();
     }
-    const device = z.string().uuid().parse(options.getDeviceMid());
+    const device = options.getDeviceMid();
     return {
       scope,
       headers: {
-        "X-Device-Mid": device,
         "X-Client-Language": localeSchema.parse(locale),
         "X-ZCode-App-Version": options.appVersion,
         ...(token ? { Authorization: `Bearer ${token}` } : {}),

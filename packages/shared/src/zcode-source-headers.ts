@@ -33,7 +33,6 @@ export function buildZCodeSourceHeadersFromContext(
   const appVersion = normalizeZCodeSourceHeaderValue(options.appVersion);
   const arch = normalizeZCodeSourceHeaderValue(options.arch);
   const clientLanguage = normalizeZCodeSourceHeaderValue(options.clientLanguage) ?? "unknown";
-  const clientTimezone = normalizeZCodeSourceHeaderValue(options.clientTimezone) ?? "unknown";
   const deviceMid = normalizeZCodeSourceHeaderValue(options.deviceMid);
   const endpointOrigin =
     normalizeZCodeSourceHeaderValue(options.endpointOrigin) ?? DEFAULT_ZCODE_ENDPOINT_ORIGIN;
@@ -51,7 +50,6 @@ export function buildZCodeSourceHeadersFromContext(
     ...(platform && arch ? { "X-Platform": `${platform}-${arch}` } : {}),
     ...(releaseChannel ? { "X-Release-Channel": releaseChannel } : {}),
     "X-Client-Language": clientLanguage,
-    "X-Client-Timezone": clientTimezone,
     ...(platform ? { "X-Os-Category": normalizeOsCategory(platform) } : {}),
     ...(osVersion ? { "X-Os-Version": osVersion } : {}),
     ...(deviceMid ? { "X-Device-Mid": deviceMid } : {}),

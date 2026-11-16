@@ -235,7 +235,6 @@ export class ManifestUpdateProvider extends Provider<UpdateInfo> {
       "X-Platform": this.releasePlatform,
       "X-Release-Channel": releaseChannelApiValue,
       ...(authorization ? { Authorization: authorization } : {}),
-      ...(this.options.deviceMid?.trim() ? { "X-Device-Mid": this.options.deviceMid.trim() } : {}),
     });
     if (!raw) {
       throw new Error(`Empty electron update manifest: ${manifestUrl.toString()}`);
