@@ -245,10 +245,11 @@ describe("Anthropic request metadata", () => {
         | undefined;
       // Reasoning 由 Model Option Map 写入最终原始请求体；SDK Provider Options
       // 这里只承载 Anthropic 动态归因元数据，不能形成第二套 Reasoning 映射。
-      // FORK POLICY: динамическая атрибуция устройства отключена — резолвер
-      // возвращает undefined, остаётся только статический userId из запроса.
+      // FORK POLICY: резолвер метаданных отключён — metadata.user_id появляется
+      // в SDK options только через резолвер, форк его не запускает, поэтому
+      // атрибуции нет вовсе (статический userId запроса в SDK options не попадает).
       expect(anthropicOptions?.effort).toBeUndefined();
-      expect(anthropicOptions?.metadata?.userId).toBe("stale-static-user-id");
+      expect(anthropicOptions?.metadata?.userId).toBeUndefined();
     }
   });
 });
