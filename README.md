@@ -56,6 +56,15 @@ renderer loads the Aliyun captcha SDK from `o.alicdn.com` and runs a verificatio
 `zcode.z.ai` as claim headers. The ARMS event reporting embedded in the official
 captcha module is not ported, and the model-request verification pipeline stays off.
 
+Supply-chain note: the captcha SDK URL is unversioned by nature (the CDN serves no
+versioned paths). The sync pipeline fingerprints it on every run and a changed hash
+goes to security review before the next claim. Baseline at merge time:
+`AliyunCaptcha.js` sha256 `4d3e160b24d900ea238e510841d9b287899dd4645a5dd562c0c59dacf09cd0cf`.
+
+Known upstream gap, kept as an owner backlog item rather than a fork change: the
+desktop renderer has no Content-Security-Policy at all; the captcha SDK (and every
+other renderer script) runs unrestricted.
+
 ## Verification
 
 The audit that produced this fork is reproducible from the repo:
