@@ -47,6 +47,15 @@ Everything else that leaves the machine goes where you would expect: `zcode.z.ai
 A full domain registry was compiled from the compiled bundle and reviewed endpoint by
 endpoint.
 
+One addition on top of the audit: manual promo-plan claims. The claim endpoint
+(`/api/v1/zcode-plan/billing/claim`) rejects every request without an Aliyun captcha
+proof with `captcha verify failed`, so the fork restores the claim-side captcha module
+from the official build. When (and only when) you press Claim on a promo banner, the
+renderer loads the Aliyun captcha SDK from `o.alicdn.com` and runs a verification
+(in most cases silently, via traceless mode); the resulting one-time param is sent to
+`zcode.z.ai` as claim headers. The ARMS event reporting embedded in the official
+captcha module is not ported, and the model-request verification pipeline stays off.
+
 ## Verification
 
 The audit that produced this fork is reproducible from the repo:
