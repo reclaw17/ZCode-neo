@@ -19,6 +19,7 @@ test("没有私有默认配置也没有环境变量时三项能力都关闭", as
   const config = await resolveBuildTimeConfig({}, { defaultsPath: join(dir, "missing.json") });
   assert.deepEqual(config, {
     armsRumEndpoint: "",
+      forkTag: "neo.3",
     telemetryReportEndpoint: "",
     autoUpdateEnabled: false,
   });
@@ -32,6 +33,7 @@ test("FORK POLICY: без телеметрии и автообновления �
   });
   assert.deepEqual(await resolveBuildTimeConfig({}, { defaultsPath }), {
     armsRumEndpoint: "",
+      forkTag: "neo.3",
     telemetryReportEndpoint: "",
     autoUpdateEnabled: false,
   });
@@ -54,6 +56,7 @@ test("FORK POLICY: телеметрия не включается env, авто�
     ),
     {
       armsRumEndpoint: "",
+      forkTag: "neo.3",
       telemetryReportEndpoint: "",
       autoUpdateEnabled: true,
     },
@@ -64,6 +67,7 @@ test("FORK POLICY: битый приватный конфиг игнорируе
   const defaultsPath = await writeDefaults("broken.json", "[1]");
   assert.deepEqual(await resolveBuildTimeConfig({}, { defaultsPath }), {
     armsRumEndpoint: "",
+      forkTag: "neo.3",
     telemetryReportEndpoint: "",
     autoUpdateEnabled: false,
   });
@@ -72,11 +76,13 @@ test("FORK POLICY: битый приватный конфиг игнорируе
 test("define 以 JSON 字面量注入", () => {
   assert.deepEqual(
     createBuildTimeConfigDefines({
+      forkTag: "neo.3",
       armsRumEndpoint: "https://rum.example.com/x",
       telemetryReportEndpoint: "",
       autoUpdateEnabled: true,
     }),
     {
+      __ZCODE_FORK_TAG__: '"neo.3"',
       __ZCODE_ARMS_RUM_ENDPOINT__: '"https://rum.example.com/x"',
       __ZCODE_TELEMETRY_REPORT_ENDPOINT__: '""',
       __ZCODE_AUTO_UPDATE_ENABLED__: "true",

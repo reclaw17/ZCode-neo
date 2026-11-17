@@ -9,6 +9,7 @@ import {
   ZCODE_BUILD_TIME,
   ZCODE_COMMIT,
   ZCODE_ENV,
+  ZCODE_FORK_TAG,
   ZCODE_VERSION,
 } from "@zcode/shared";
 import { createCustomAboutDialogHtml } from "./aboutWindow.js";
@@ -239,7 +240,7 @@ export async function showAboutDialog(
 ): Promise<MessageBoxReturnValue> {
   const { app, BrowserWindow } = await import("electron");
   const snapshot = createAboutSnapshot({
-    appVersion: app.getVersion(),
+    appVersion: ZCODE_FORK_TAG ? `${app.getVersion()}-${ZCODE_FORK_TAG}` : app.getVersion(),
     buildMetadata: readBuildMetadata(),
   });
   const aboutMessages = getAboutMessages(locale);

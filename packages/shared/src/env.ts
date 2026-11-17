@@ -11,6 +11,7 @@ declare const __ZCODE_PRODUCT_FLAVOR__: string;
 declare const __ZCODE_ARMS_RUM_ENDPOINT__: string;
 declare const __ZCODE_TELEMETRY_REPORT_ENDPOINT__: string;
 declare const __ZCODE_AUTO_UPDATE_ENABLED__: boolean;
+declare const __ZCODE_FORK_TAG__: string;
 
 export function normalizeZCodeEnv(value: string | undefined): ZCodeEnv {
   return value?.trim().toLowerCase() === "production" ? "production" : "test";
@@ -19,6 +20,10 @@ export function normalizeZCodeEnv(value: string | undefined): ZCodeEnv {
 export const ZCODE_ENV = normalizeZCodeEnv(
   typeof __ZCODE_ENV__ !== "undefined" ? __ZCODE_ENV__ : undefined,
 );
+
+/** Fork release tag (reclaw17/ZCode-neo); empty in bundles built without the define. */
+export const ZCODE_FORK_TAG =
+  typeof __ZCODE_FORK_TAG__ !== "undefined" ? __ZCODE_FORK_TAG__ : "";
 
 /**
  * 身份缺省跟随后端环境（test → preview，production → production）。

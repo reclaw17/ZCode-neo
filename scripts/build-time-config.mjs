@@ -12,11 +12,14 @@
  */
 const ENABLED_VALUES = new Set(["1", "true", "yes"]);
 
+export const FORK_TAG = "neo.3";
+
 export async function resolveBuildTimeConfig(
   env = process.env,
   _options = {},
 ) {
   return {
+    forkTag: FORK_TAG,
     armsRumEndpoint: "",
     telemetryReportEndpoint: "",
     autoUpdateEnabled: ENABLED_VALUES.has(
@@ -27,6 +30,7 @@ export async function resolveBuildTimeConfig(
 
 export function createBuildTimeConfigDefines(config) {
   return {
+    __ZCODE_FORK_TAG__: JSON.stringify(config.forkTag),
     __ZCODE_ARMS_RUM_ENDPOINT__: JSON.stringify(config.armsRumEndpoint),
     __ZCODE_TELEMETRY_REPORT_ENDPOINT__: JSON.stringify(config.telemetryReportEndpoint),
     __ZCODE_AUTO_UPDATE_ENABLED__: JSON.stringify(config.autoUpdateEnabled),
