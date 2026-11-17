@@ -848,6 +848,7 @@ const zhCN: Record<string, string> = {
   "manualClaimPlan.claim.failure.quotaExhausted.tomorrow": "今日领取名额已用完，请明天再来。",
   "manualClaimPlan.claim.failure.invalidRequest": "领取参数错误，请刷新后重试。",
   "manualClaimPlan.claim.failure.loginRequired": "请先登录后再领取。",
+  "manualClaimPlan.claim.failure.captcha": "验证码校验失败，请重试。",
   "manualClaimPlan.claim.failure.generic": "领取失败，请稍后重试。",
   "manualClaimPlan.claim.startUsingUnavailable":
     "Start Plan 当前还不可用，模型设置未改变，请稍后刷新重试。",

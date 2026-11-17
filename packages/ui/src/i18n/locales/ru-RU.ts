@@ -756,6 +756,7 @@ const ruRU: Record<string, string> = {
   "manualClaimPlan.claim.failure.invalidRequest":
     "Недопустимый запрос. Обновите страницу и повторите попытку.",
   "manualClaimPlan.claim.failure.loginRequired": "Войдите, чтобы получить этот план.",
+  "manualClaimPlan.claim.failure.captcha": "Не удалось пройти проверку капчей. Повторите попытку.",
   "manualClaimPlan.claim.failure.generic": "Не удалось получить. Повторите позже.",
   "manualClaimPlan.claim.startUsingUnavailable":
     "Start Plan ещё не готов. Настройки модели не изменены; обновите и повторите позже.",

@@ -766,6 +766,7 @@ const jaJP: Record<string, string> = {
   "manualClaimPlan.claim.failure.invalidRequest":
     "受け取りリクエストが無効です。更新してもう一度お試しください。",
   "manualClaimPlan.claim.failure.loginRequired": "このプランを受け取るにはサインインしてください。",
+  "manualClaimPlan.claim.failure.captcha": "キャプチャ認証に失敗しました。もう一度お試しください。",
   "manualClaimPlan.claim.failure.generic":
     "受け取りに失敗しました。しばらくしてからもう一度お試しください。",
   "manualClaimPlan.claim.startUsingUnavailable":

@@ -924,6 +924,7 @@ const enUS: Record<string, string> = {
     "Today's claim quota has been exhausted. Please try again tomorrow.",
   "manualClaimPlan.claim.failure.invalidRequest": "Invalid claim request. Refresh and try again.",
   "manualClaimPlan.claim.failure.loginRequired": "Sign in before claiming this plan.",
+  "manualClaimPlan.claim.failure.captcha": "Captcha verification failed. Please try again.",
   "manualClaimPlan.claim.failure.generic": "Claim failed. Please try again later.",
   "manualClaimPlan.claim.startUsingUnavailable":
     "Start Plan is not ready yet. Your model settings were not changed; refresh and try again later.",

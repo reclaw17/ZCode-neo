@@ -17,7 +17,8 @@ export const requestVerificationRecoveryAction = null;
 export type RequestVerificationRecoveryAction = never;
 export const requestVerificationActionMessages = {};
 export const requestVerificationErrorAttribution = {};
-export const requestVerificationClaimFailureMessageId = "manualClaimPlan.claim.failure.generic";
+// 领取前验证码未完成（配置读取失败或未产出 captchaVerifyParam）时的提示键。
+export const requestVerificationClaimFailureMessageId = "manualClaimPlan.claim.failure.captcha";
 export const additionalRequestModalSelectors: readonly string[] = [];
 
 export function resolveRequestSecurityErrorMessageId(_error: {

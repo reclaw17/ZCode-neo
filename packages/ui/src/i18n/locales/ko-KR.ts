@@ -735,6 +735,7 @@ const koKR: Record<string, string> = {
   "manualClaimPlan.claim.failure.invalidRequest":
     "잘못된 요청입니다. 새로고침한 후 다시 시도하세요.",
   "manualClaimPlan.claim.failure.loginRequired": "이 플랜을 받으려면 먼저 로그인하세요.",
+  "manualClaimPlan.claim.failure.captcha": "캡차 인증에 실패했습니다. 다시 시도해 주세요.",
   "manualClaimPlan.claim.failure.generic": "받기에 실패했습니다. 나중에 다시 시도하세요.",
   "manualClaimPlan.claim.startUsingUnavailable":
     "Start Plan이 아직 준비되지 않았습니다. 모델 설정은 변경되지 않았습니다. 나중에 새로고침한 후 다시 시도하세요.",
