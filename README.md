@@ -1,6 +1,6 @@
 # ZCode-neo
 
-A privacy-hardened fork of [ZCode](https://github.com/zai-org/ZCode) v3.18.2, the AI coding
+A privacy-hardened fork of [ZCode](https://github.com/zai-org/ZCode) v4.0.0, the AI coding
 workstation from Z.AI (desktop, web, and terminal agent). Same product, same models, no
 telemetry.
 
